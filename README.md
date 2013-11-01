@@ -1,3 +1,3 @@
-= Robut-Weather
+# Robut-Weather
 
-An updated weather module for Robut[https://github.com/justinweiss/robut]
+An updated weather module for [Robut](https://github.com/justinweiss/robut)
