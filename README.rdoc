@@ -1,6 +1,32 @@
 = robut-weather
 
-Description goes here.
+A {Weather Underground}[http://www.wunderground.com] based weather module for robut[https://github.com/justinweiss/robut]
+
+== Installation and usage
+
+Robut can be installed by running <tt>gem install robut-weather</tt>. This will require the additional gems <tt>robut</tt>, <tt>json</tt>, and <tt>{wunderground}[https://github.com/wnadeau/wunderground]</tt>, which may or may not require their own dependencies.
+
+Your Chatfile will need to have the Weather plugin loaded.
+
+  require 'robut-weather'
+  Robut::Plugin::Weather.default_location = "DEFAULT LOCATION"
+  Robut::Plugin::Weather.api_key = "[API KEY]"
+  Robut::Plugin.plugins << Robut::Plugin::Weather
+
+[DEFAULT LOCATION] must be in an acceptible Weather Underground format. See Location Formats below.
+[API KEY] must be obtained through Weather Underground. The Weather Underground API is only available to registered members. For light use, there is no charge. A key can be obtained from http://api.wunderground.com/weather/api/
+                            
+== Location Formats
+
+Locations must be in the format expected by {Weather Underground's API}[http://api.wunderground.com/weather/api/d/docs?d=data/geolookup#examples]
+
+* STATE/CITY
+* COUNTRY/CITY
+* AUTOIP
+* Zip Code
+* Airport Code
+
+See http://api.wunderground.com/weather/api/d/docs?d=data/geolookup#examples for further examples.
 
 == Contributing to robut-weather
  
@@ -12,8 +38,7 @@ Description goes here.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+== Weather Underground API Usage
 
-Copyright (c) 2013 Richard. See LICENSE.txt for
-further details.
-
+The data provided by this module comes from {Weather Underground}[http://www.wunderground.com].
+http://icons.wxug.com/logos/images/wundergroundLogo_4c_horz.jpg

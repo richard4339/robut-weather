@@ -32,7 +32,8 @@ class Robut::Plugin::Weather
     end
 
     begin
-      output(current_conditions(l))
+      o = current_conditions(l)
+      reply o unless o.nil? || o == ""
     rescue Exception => msg
       puts msg
       error_output(msg)
@@ -41,16 +42,11 @@ class Robut::Plugin::Weather
 
   def location(x)
     x = self.class.default_location if x.nil?
-    #raise Exception, "I don't have a default location!" if x.nil? || x == ""
     x
   end
 
-  def output(m)
-    reply "#{m} - from http://www.wunderground.com"
-  end
-
   def error_output(m)
-          reply "Error getting weather: #{m}"
+    reply "Error getting weather: #{m}"
   end
 
   # Get today's current_conditions
@@ -60,10 +56,23 @@ class Robut::Plugin::Weather
     begin
       parsed = w_api.conditions_for(l)
       w = parsed["current_observation"]
+
     rescue => e
-      raise e
+      case e
+        when Wunderground::MissingAPIKey
+          error_output "API Key has not been set."
+          return ""
+        else
+          raise e
+      end
     end
-    current_conditions = "Weather for #{w['display_location']['full']}: #{w['weather']}, Current Temperature #{w['temperature_string']}, Wind #{w['wind_string']}"
+
+    if w.nil?
+      error_output "Invalid Location"
+      return ""
+    end
+
+    current_conditions = "Weather for #{w['display_location']['full']}: #{w['weather']}, Current Temperature #{w['temperature_string']}, Wind #{w['wind_string']}. Full forecast: #{w['forecast_url']}"
     current_conditions
   end
 end
