@@ -11,20 +11,37 @@ class Robut::Plugin::Weather
   end
 
   # Returns a description of how to use this plugin
-  desc "weather - returns the weather in the default location for today"
+  def usage
+    [
+        "#{at_nick} weather - returns the current conditions in the default location",
+        "#{at_nick} weather <location> - returns the current conditions for <location>"
+    ]
+  end
 
-  match /^weather(.*)$/, :sent_to_me => true do |query|
-    l = location(words(query).first)
+  def handle(time, sender_nick, message)
+    words = words(message)
+
+    i = words.index("weather")
+    # ignore messages that don't have "weather" in them
+    return if i.nil?
+
+    l = location(words(message)[i + 1])
+    if l.nil?
+      error_output "I don't have a default location!"
+      return
+    end
+
     begin
       output(current_conditions(l))
     rescue Exception => msg
       puts msg
-      reply "Error getting weather: #{msg}"
+      error_output(msg)
     end
   end
 
   def location(x)
     x = self.class.default_location if x.nil?
+    #raise Exception, "I don't have a default location!" if x.nil? || x == ""
     x
   end
 
@@ -32,12 +49,15 @@ class Robut::Plugin::Weather
     reply "#{m} - from http://www.wunderground.com"
   end
 
+  def error_output(m)
+          reply "Error getting weather: #{m}"
+  end
+
   # Get today's current_conditions
   def current_conditions(l)
     current_conditions = "Unknown"
     w_api = Wunderground.new(self.class.api_key)
     begin
-      #parsed = w_api.forecast_for(l)
       parsed = w_api.conditions_for(l)
       w = parsed["current_observation"]
     rescue => e
