@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "robut-weather"
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Richard Lynskey"]
@@ -29,8 +29,7 @@ Gem::Specification.new do |s|
     "test/presence_mock.rb",
     "test/simplecov_helper.rb",
     "test/test_helper.rb",
-    "test/test_weather.rb",
-    "weather.rb"
+    "test/test_weather.rb"
   ]
   s.homepage = "http://github.com/richard4339/robut-weather"
   s.licenses = ["MIT"]
