@@ -13,13 +13,11 @@ Gem::Specification.new do |s|
   s.description = "A Wunderground based weather plugin for robut"
   s.email = "richard@mozor.net"
   s.extra_rdoc_files = [
-    "README.md",
     "README.rdoc"
   ]
   s.files = [
     ".document",
     "Gemfile",
-    "README.md",
     "README.rdoc",
     "Rakefile",
     "VERSION",
