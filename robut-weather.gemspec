@@ -12,6 +12,28 @@ Gem::Specification.new do |s|
   s.date = "2013-12-21"
   s.description = "A Wunderground based weather plugin for robut"
   s.email = "richard@mozor.net"
+  s.extra_rdoc_files = [
+    "README.md",
+    "README.rdoc"
+  ]
+  s.files = [
+    ".document",
+    "Gemfile",
+    "README.md",
+    "README.rdoc",
+    "Rakefile",
+    "VERSION",
+    "lib/robut-weather.rb",
+    "robut-weather.gemspec",
+    "test/connection_mock.rb",
+    "test/fixtures/0.json",
+    "test/fixtures/12345.json",
+    "test/presence_mock.rb",
+    "test/simplecov_helper.rb",
+    "test/test_helper.rb",
+    "test/test_weather.rb",
+    "weather.rb"
+  ]
   s.homepage = "http://github.com/richard4339/robut-weather"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
