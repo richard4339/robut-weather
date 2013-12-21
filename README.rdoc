@@ -2,6 +2,8 @@
 
 A {Weather Underground}[http://www.wunderground.com] based weather module for robut[https://github.com/justinweiss/robut]
 
+{<img src="https://badge.fury.io/rb/robut-weather.png" alt="Gem Version" />}[http://badge.fury.io/rb/robut-weather]
+
 == Installation and usage
 
 Robut can be installed by running <tt>gem install robut-weather</tt>. This will require the additional gems <tt>robut</tt>, <tt>json</tt>, and <tt>{wunderground}[https://github.com/wnadeau/wunderground]</tt>, which may or may not require their own dependencies.
