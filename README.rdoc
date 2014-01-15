@@ -6,7 +6,7 @@ A {Weather Underground}[http://www.wunderground.com] based weather module for ro
 
 == Installation and usage
 
-Robut can be installed by running <tt>gem install robut-weather</tt>. This will require the additional gems <tt>robut</tt>, <tt>json</tt>, and <tt>{wunderground}[https://github.com/wnadeau/wunderground]</tt>, which may or may not require their own dependencies.
+This module can be installed by running <tt>gem install robut-weather</tt>. This will require the additional gems <tt>robut</tt>, <tt>json</tt>, and <tt>{wunderground}[https://github.com/wnadeau/wunderground]</tt>, which may or may not require their own dependencies.
 
 Your Chatfile will need to have the Weather plugin loaded.
 
