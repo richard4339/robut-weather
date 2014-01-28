@@ -11,7 +11,7 @@ This module can be installed by running <tt>gem install robut-weather</tt>. This
 Your Chatfile will need to have the Weather plugin loaded.
 
   require 'robut-weather'
-  Robut::Plugin::Weather.default_location = "DEFAULT LOCATION"
+  Robut::Plugin::Weather.default_location = "[DEFAULT LOCATION]"
   Robut::Plugin::Weather.api_key = "[API KEY]"
   Robut::Plugin.plugins << Robut::Plugin::Weather
 
