@@ -20,8 +20,14 @@ Your Chatfile will need to have the Weather plugin loaded.
 
 == Changelog
 
+[v0.1.4 released 9/28/2014]
+  Command now requires you to specify the bot's name as an @mention
+
+  Re-pushed gem with new version to include changelog
+
 [v0.1.3 released 9/24/2014]
   Command now requires you to specify the bot's name as an @mention
+
 [0.1.2 released 12/21/2013]
   Initial official release
                             
