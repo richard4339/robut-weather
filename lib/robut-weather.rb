@@ -14,13 +14,32 @@ class Robut::Plugin::Weather
   def usage
     [
         "#{at_nick} weather - returns the current conditions in the default location",
-        "#{at_nick} weather <location> - returns the current conditions for <location>"
+        "#{at_nick} weather <location> - returns the current conditions for <location>",
+        "#{at_nick} radar - returns the radar for the default location",
+        "#{at_nick} radar <location> - returns the radar for <location>"
     ]
   end
 
   def handle(time, sender_nick, message)
     if sent_to_me?(message)
       words = words(message)
+
+      i = words.index("radar")
+      unless i.nil?
+        l = location(words(message)[i + 1])
+        if l.nil?
+          error_output "I don't have a default location!"
+          return
+        end
+
+        begin
+          o = radar(l)
+          reply o unless o.nil? || o == ""
+        rescue Exception => msg
+          puts msg
+          error_output(msg)
+        end
+      end
 
       i = words.index("weather")
       # ignore messages that don't have "weather" in them
@@ -76,5 +95,12 @@ class Robut::Plugin::Weather
 
     current_conditions = "Weather for #{w['display_location']['full']}: #{w['weather']}, Current Temperature #{w['temperature_string']}, Wind #{w['wind_string']}. Full forecast: #{w['forecast_url']}"
     current_conditions
+  end
+
+  # Get radar image
+  def radar(l)
+
+    w_api = Wunderground.new(self.class.api_key)
+    return "#{w_api.base_api_url}animatedradar/q/#{l}.gif?num=6&delay=50&interval=30"
   end
 end
