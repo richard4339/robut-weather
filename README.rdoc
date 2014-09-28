@@ -21,7 +21,7 @@ Your Chatfile will need to have the Weather plugin loaded.
 == Changelog
 
 [v1.0.0.pre1 released 9/28/2014]
-  Added initial support for the radar command
+  Added initial basic support for the radar command
 
 [v0.1.4 released 9/28/2014]
   Command now requires you to specify the bot's name as an @mention
