@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem "robut", ">= 0.4"
+gem "robut", ">= 0.4.0"
 gem "json"
 gem "wunderground"
 

@@ -19,24 +19,26 @@ class Robut::Plugin::Weather
   end
 
   def handle(time, sender_nick, message)
-    words = words(message)
+    if sent_to_me?(message)
+      words = words(message)
 
-    i = words.index("weather")
-    # ignore messages that don't have "weather" in them
-    return if i.nil?
+      i = words.index("weather")
+      # ignore messages that don't have "weather" in them
+      return if i.nil?
 
-    l = location(words(message)[i + 1])
-    if l.nil?
-      error_output "I don't have a default location!"
-      return
-    end
+      l = location(words(message)[i + 1])
+      if l.nil?
+        error_output "I don't have a default location!"
+        return
+      end
 
-    begin
-      o = current_conditions(l)
-      reply o unless o.nil? || o == ""
-    rescue Exception => msg
-      puts msg
-      error_output(msg)
+      begin
+        o = current_conditions(l)
+        reply o unless o.nil? || o == ""
+      rescue Exception => msg
+        puts msg
+        error_output(msg)
+      end
     end
   end
 
